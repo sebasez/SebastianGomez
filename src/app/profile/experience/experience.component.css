@@ -6,17 +6,21 @@
 *
 */
 
+
 /* Timeline holder */
+
 ul.timeline {
     list-style-type: none;
     position: relative;
     padding-left: 1.5rem;
 }
 
- /* Timeline vertical line */
+
+/* Timeline vertical line */
+
 ul.timeline:before {
     content: ' ';
-    background: #fff;
+    background: #17a2b8;
     display: inline-block;
     position: absolute;
     left: 16px;
@@ -30,7 +34,9 @@ li.timeline-item {
     margin: 20px 0;
 }
 
+
 /* Timeline item arrow */
+
 .timeline-arrow {
     border-top: 0.5rem solid transparent;
     border-right: 0.5rem solid #fff;
@@ -40,14 +46,16 @@ li.timeline-item {
     left: 2rem;
 }
 
+
 /* Timeline item circle marker */
+
 li.timeline-item::before {
     content: ' ';
     background: #ddd;
     display: inline-block;
     position: absolute;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid #17a2b8;
     left: 11px;
     width: 14px;
     height: 14px;
