@@ -4,18 +4,30 @@ cache:
     - ~!@/.npm
 node_js:
   - '9'
+
+dist: trusty
+sudo: required
+
+before_script:
+  - npm install -g @angular/cli
+
 git:
   depth: 3
+
 script:
-  - ng build --prod
+  - ng lint
+  - npm run test-headless
+  - ng build --prod --base-href https://sebasez.github.io/SebastianGomez/
+
+
 deploy:
   provider: pages
   skip-cleanup: true
   keep-history: true
   github-token: $GITHUB_TOKEN
-  local-dir: dist/
+  local-dir: dist
   target-brach: master
   commit_message: "Deply release ${TRAVIS_TAG}"
   on:
     branch: develop
- 
+
