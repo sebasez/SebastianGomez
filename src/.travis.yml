@@ -2,17 +2,19 @@ language: node_js
 cache:
   directories:
     - ~!@/.npm
+
 node_js:
-  - '9'
+  - '8'
+
+cache:
+  directories:
+     - ./node_modules
 
 dist: trusty
 sudo: required
 
 before_script:
   - npm install -g @angular/cli
-
-git:
-  depth: 3
 
 script:
   - ng lint
@@ -25,9 +27,8 @@ deploy:
   skip-cleanup: true
   keep-history: true
   github-token: $GITHUB_TOKEN
-  local-dir: dist
+  local-dir: dist/
   target-brach: master
   commit_message: "Deply release ${TRAVIS_TAG}"
   on:
     branch: develop
-
