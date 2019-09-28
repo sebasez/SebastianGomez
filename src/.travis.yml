@@ -1,34 +1,31 @@
-language: generic
-cache:
-  directories:
-    - ~!@/.npm
-
+language: node_js
 node_js:
-  - '8'
+ - "8.11"
 
-cache:
-  directories:
-     - ./node_modules
+branches:
+  only:
+    - master
 
-dist: trusty
-sudo: required
+addons:
+  chrome: stable
 
 before_script:
-  - npm install -g @angular/cli
+  - yarn global add @angular/cli
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
 
 script:
-  - ng lint
-  - npm run test-headless
-  - ng build --prod --base-href https://sebasez.github.io/SebastianGomez/
+  - ng build --prod
 
 
 deploy:
   provider: pages
   skip-cleanup: true
-  keep-history: true
   github-token: $GITHUB_TOKEN
-  local-dir: dist/
-  target-brach: master
-  commit_message: "Deply release ${TRAVIS_TAG}"
+  keep-history: true
+  local-dir: ./dist/
   on:
     branch: develop
